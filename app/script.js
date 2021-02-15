@@ -6,7 +6,7 @@ class App extends React.Component {
     status: 'off',
     time: 0,
     timer: null,
-  }
+  };
 
   formatTime = time => {
     let formatTime;
@@ -24,10 +24,19 @@ class App extends React.Component {
     formatTime = minutes + ':' + seconds;
 
     return formatTime;
-  }
+  };
+
+  step = () => { };
+
+  startTimer = () => {
+    this.setState({
+      timer: setInterval(this.step, 1000),
+      time: 1200,
+      status: 'work',
+    });
+  };
 
   render() {
-
     const { status } = this.state;
 
     return (
@@ -40,7 +49,7 @@ class App extends React.Component {
         {(status === 'work') && <img src="./images/work.png" />}
         {(status === 'rest') && <img src="./images/rest.png" />}
         {(status !== 'off') && <div className="timer">{this.formatTime(this.state.time)}</div>}
-        {(status === 'off') && <button className="btn">Start</button>}
+        {(status === 'off') && <button className="btn" onClick={this.startTimer}>Start</button>}
         {(status !== 'off') && <button className="btn">Stop</button>}
         <button className="btn btn-close">X</button>
       </div>
