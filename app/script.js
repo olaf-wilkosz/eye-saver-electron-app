@@ -26,7 +26,16 @@ class App extends React.Component {
     return formatTime;
   };
 
-  step = () => { };
+  step = () => {
+    this.setState({ time: this.state.time - 1 });
+
+    if (this.state.time === 0) {
+      this.setState({
+        status: this.state.status === 'work' ? 'rest' : 'work',
+        time: this.state.status === 'rest' ? 1200 : 20.
+      });
+    };
+  };
 
   startTimer = () => {
     this.setState({
