@@ -1,7 +1,18 @@
 import React from 'react';
 import { render } from 'react-dom';
+import PropTypes from 'prop-types';
 
 class App extends React.Component {
+  static propTypes = {
+    status: PropTypes.string,
+    time: PropTypes.number,
+    timer: PropTypes.number,
+  }
+
+  static defaultProps = {
+    status: 'off',
+    timer: null,
+  }
 
   render() {
     return (
