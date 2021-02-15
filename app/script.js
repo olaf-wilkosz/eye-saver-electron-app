@@ -8,6 +8,24 @@ class App extends React.Component {
     timer: null,
   }
 
+  formatTime = time => {
+    let formatTime;
+    let minutes = Math.floor(time / 60);
+    let seconds = Math.floor(time - (minutes * 60));
+
+    if (minutes < 10) {
+      minutes = '0' + minutes;
+    }
+
+    if (seconds < 10) {
+      seconds = '0' + seconds;
+    }
+
+    formatTime = minutes + ':' + seconds;
+
+    return formatTime;
+  }
+
   render() {
 
     const { status } = this.state;
@@ -21,7 +39,7 @@ class App extends React.Component {
         </div>}
         {(status === 'work') && <img src="./images/work.png" />}
         {(status === 'rest') && <img src="./images/rest.png" />}
-        {(status !== 'off') && <div className="timer">18:23</div>}
+        {(status !== 'off') && <div className="timer">{this.formatTime(this.state.time)}</div>}
         {(status === 'off') && <button className="btn">Start</button>}
         {(status !== 'off') && <button className="btn">Stop</button>}
         <button className="btn btn-close">X</button>
