@@ -30,6 +30,7 @@ class App extends React.Component {
     this.setState({ time: this.state.time - 1 });
 
     if (this.state.time === 0) {
+      this.playBell();
       this.setState({
         status: this.state.status === 'work' ? 'rest' : 'work',
         time: this.state.status === 'rest' ? 1200 : 20.
@@ -37,10 +38,15 @@ class App extends React.Component {
     };
   };
 
+  playBell = () => {
+    const bell = new Audio('./sounds/bell.wav')
+    bell.play();
+  };
+
   startTimer = () => {
     this.setState({
       timer: setInterval(this.step, 1000),
-      time: 1200,
+      time: 12,
       status: 'work',
     });
   };
