@@ -45,6 +45,18 @@ class App extends React.Component {
     });
   };
 
+  stopTimer = () => {
+    this.setState({
+      timer: clearInterval(this.state.timer),
+      time: 0,
+      status: 'off',
+    });
+  };
+
+  closeApp = () => {
+    window.close();
+  }
+
   render() {
     const { status } = this.state;
 
@@ -59,8 +71,8 @@ class App extends React.Component {
         {(status === 'rest') && <img src="./images/rest.png" />}
         {(status !== 'off') && <div className="timer">{this.formatTime(this.state.time)}</div>}
         {(status === 'off') && <button className="btn" onClick={this.startTimer}>Start</button>}
-        {(status !== 'off') && <button className="btn">Stop</button>}
-        <button className="btn btn-close">X</button>
+        {(status !== 'off') && <button className="btn" onClick={this.stopTimer}>Stop</button>}
+        <button className="btn btn-close" onClick={this.closeApp}>X</button>
       </div>
     )
   }
