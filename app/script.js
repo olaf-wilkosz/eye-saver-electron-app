@@ -52,8 +52,9 @@ class App extends React.Component {
   };
 
   stopTimer = () => {
+    clearInterval(this.state.timer);
     this.setState({
-      timer: clearInterval(this.state.timer),
+      timer: null,
       time: 0,
       status: 'off',
     });
