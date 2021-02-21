@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "electron main.js"
+    "start": "electron main.js",
+    "build-exe": "electron-packager . eye-saver --platform=win32 --arch=x64"
   },
   "repository": {
     "type": "git",
