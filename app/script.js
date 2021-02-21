@@ -33,7 +33,7 @@ class App extends React.Component {
       this.playBell();
       this.setState({
         status: this.state.status === 'work' ? 'rest' : 'work',
-        time: this.state.status === 'rest' ? 1200 : 20.
+        time: this.state.status === 'rest' ? 1200 : 20,
       });
     };
   };
